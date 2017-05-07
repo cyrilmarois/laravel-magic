@@ -2,5 +2,6 @@
     "name": "Rarity",
     "slug": "rarity",
     "version": "1.0",
-    "description": "This is the description for the Rarity module."
+    "description": "This is the description for the Rarity module.",
+    "order": 4
 }

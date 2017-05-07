@@ -2,5 +2,6 @@
     "name": "Language",
     "slug": "language",
     "version": "1.0",
-    "description": "This is the description for the Language module."
+    "description": "This is the description for the Language module.",
+    "order": 2
 }

@@ -2,5 +2,6 @@
     "name": "Deck",
     "slug": "deck",
     "version": "1.0",
-    "description": "This is the description for the Deck module."
+    "description": "This is the description for the Deck module.",
+    "order": 7
 }
