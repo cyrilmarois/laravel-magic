@@ -19,6 +19,7 @@ class CreateDeckUserTable extends Migration
             $table->unsignedInteger('user_id')
                 ->index();
             $table->primary(['deck_id', 'user_id']);
+            $table->timestamps();
         });
     }
 

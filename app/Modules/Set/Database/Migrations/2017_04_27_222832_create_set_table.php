@@ -26,6 +26,7 @@ class CreateSetTable extends Migration
             $table->unsignedInteger('collection_id')
                 ->index()
                 ->nullable();
+            $table->timestamps();
         });
     }
 

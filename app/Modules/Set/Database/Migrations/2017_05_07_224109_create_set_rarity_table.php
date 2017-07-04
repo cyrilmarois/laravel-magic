@@ -20,6 +20,7 @@ class CreateSetRarityTable extends Migration
                 ->index();
             $table->string('icon_filename');
             $table->primary(['set_id', 'rarity_id']);
+            $table->timestamps();
         });
     }
 

@@ -19,6 +19,7 @@ class CreateCardDeckTable extends Migration
             $table->unsignedInteger('deck_id')
                 ->index();
             $table->primary(['card_id', 'deck_id']);
+            $table->timestamps();
         });
     }
 

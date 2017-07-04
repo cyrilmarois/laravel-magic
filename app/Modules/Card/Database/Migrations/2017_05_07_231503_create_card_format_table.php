@@ -19,6 +19,7 @@ class CreateCardFormatTable extends Migration
             $table->unsignedInteger('format_id')
                 ->index();
             $table->primary(['card_id', 'format_id']);
+            $table->timestamps();
         });
     }
 

@@ -19,6 +19,7 @@ class CreateDeckFormatTable extends Migration
             $table->unsignedInteger('format_id')
                 ->index();
             $table->primary(['deck_id', 'format_id']);
+            $table->timestamps();
         });
     }
 
