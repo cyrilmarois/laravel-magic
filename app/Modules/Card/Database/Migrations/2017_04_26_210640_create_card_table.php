@@ -21,6 +21,8 @@ class CreateCardTable extends Migration
                 ->nullable();
             $table->string('toughness', 2)
                 ->nullable();
+            $table->string('number', 5)
+                ->nullable();
             $table->integer('set_id')
                 ->unsigned()
                 ->nullable();
