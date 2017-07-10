@@ -1,0 +1,7 @@
+{
+    "name": "Color",
+    "slug": "color",
+    "version": "1.0",
+    "description": "This is the description for the Color module.",
+    "order": 3
+}

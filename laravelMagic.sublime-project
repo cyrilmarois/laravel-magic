@@ -1,0 +1,27 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+	"settings": {
+		"xdebug": {
+			"port": 9001,
+			"url": "http://laravelMagic.dev/",
+			"path_mapping": {},
+			"super_globals": true,
+			"max_children": 32,
+			"debug_layout" : {
+				"cols": [0.0, 0.5, 1.0],
+				"rows": [0.0, 0.7, 1.0],
+				"cells": [[0, 0, 2, 1], [0, 1, 1, 2], [1, 1, 2, 2]]
+			},
+			"breakpoint_enabled": "circle",
+			"breakpoint_disabled": "dot",
+			"breakpoint_current": "",
+			"current_line": "bookmark"
+		}
+	}
+}
