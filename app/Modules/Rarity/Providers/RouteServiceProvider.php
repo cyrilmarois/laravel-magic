@@ -71,7 +71,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::group([
             'middleware' => 'api',
             'namespace'  => $this->namespace,
-            'prefix'     => 'api',
+            'prefix'     => 'api/v'.env('APP_API_VERSION'),
         ], function ($router) {
             require module_path('rarity', 'Routes/api.php');
         });
