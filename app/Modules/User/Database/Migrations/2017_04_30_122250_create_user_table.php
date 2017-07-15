@@ -26,6 +26,8 @@ class CreateUserTable extends Migration
             $table->datetime('birthday')
                 ->nullable();
             $table->boolean('status');
+            $table->boolean('remember_token', 100)
+                ->nullable();
             $table->timestamps();
         });
     }
