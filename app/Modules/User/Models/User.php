@@ -2,11 +2,15 @@
 
 namespace App\Modules\User\Models;
 
+use App\Exceptions\Handler;
 use App\Helpers\ArrayHelper;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Passport\HasApiTokens;
+use Symfony\Component\HttpFoundation\Response;
 
 class User extends Authenticatable
 {
@@ -51,31 +55,44 @@ class User extends Authenticatable
         'create' => [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'nick_name' => 'required|string|max:255',
+            'nick_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255|unique:user',
             'password' => 'required|string|min:6|confirmed',
-            'status' => 'boolean',
-            'birthday' => 'date',
+            'status' => 'nullable|boolean',
+            'birthday' => 'nullable|date',
         ],
         'update' => [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'nick_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:user,id',
-            'password' => 'required|string|min:6|confirmed',
-            'status' => 'boolean',
-            'birthday' => 'date',            
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'nick_name' => 'nullable|string|max:255',
+            'email' => 'nullable|string|email|max:255|unique:user,id',
+            'password' => 'nullable|string|min:6|confirmed',
+            'status' => 'nullable|boolean',
+            'birthday' => 'nullable|date',            
         ],
     ];
 
     public function validate($data, $scenario)
     {
-        $result = false;
-        $rules = ArrayHelper::check($scenario, static::$rules);
-        if (!is_null($rules)) {
-            $result = Validator::make($data, $rules);
+        try {
+            Log::info('Trace in '.__METHOD__);
+
+            $rules = ArrayHelper::check($scenario, static::$rules);
+            if (!is_null($rules)) {
+                $validation = Validator::make($data, $rules);
+                if ($validation->fails()) {
+                    $errors = $validation->getMessageBag()->all();
+                    $errors = implode(',', $errors);
+                    $response = Response()->json($errors, Response::HTTP_BAD_REQUEST); 
+                    throw new HttpResponseException($response);
+               }
+            } else {
+                $response = Response()->json('Missing scenario\'s rules', Response::HTTP_INTERNAL_SERVER_ERROR); 
+                throw new HttpResponseException($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        } catch(HttpResponseException $e) {
+            Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
+            throw $e;
         }
-        
-        return $result;
     }
 }
