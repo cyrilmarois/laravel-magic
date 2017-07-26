@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/auth', function (Request $request) {
-    // return $request->auth();
-})->middleware('auth:api');
+Route::group(['prefix' => '/auth', 'middleware' => 'api'], function () {
+    
+});

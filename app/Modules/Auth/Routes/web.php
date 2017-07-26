@@ -11,8 +11,8 @@
 |
 */
 
-Route::group(['prefix' => 'auth'], function () {
-    Route::get('/', function () {
-        dd('This is the Auth module index page. Build something great!');
-    });
+Route::group(['prefix' => '/api/v'.env('APP_API_VERSION').'/auth', 'middleware' => 'web'], function () {
+    Route::post('/login', 'AuthController@login');
+    Route::post('/logout', 'AuthController@logout');
+    Route::get('/is-authenticated', 'AuthController@isAuthenticated');
 });
