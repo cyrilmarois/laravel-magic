@@ -19,13 +19,17 @@ class CreateUserTable extends Migration
                 ->nullable();
             $table->string('last_name')
                 ->nullable();
-            $table->string('nick_name');
+            $table->string('nick_name')
+                ->nullable();
             $table->string('email')
                 ->unique();
             $table->string('password');
             $table->datetime('birthday')
                 ->nullable();
-            $table->boolean('status');
+            $table->boolean('status')
+                ->default(0);
+            $table->string('remember_token', 100)
+                ->nullable();
             $table->timestamps();
         });
     }

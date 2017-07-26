@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => '/user', 'middleware' => 'api'], function() {
-	Route::post('/create', 'UserController@create');
-	Route::get('/', 'UserController@index');
-	Route::get('/{id}', 'UserController@show');
-	Route::patch('/{id}', 'UserController@update');
-	Route::delete('/{id}', 'UserController@index');
+Route::group(['prefix' => '/auth', 'middleware' => 'api'], function () {
+    
 });

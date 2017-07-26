@@ -179,6 +179,7 @@ return [
 
         //Custom
         Caffeinated\Modules\ModulesServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
     ],
 
     /*
