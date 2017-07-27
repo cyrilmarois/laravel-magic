@@ -13,14 +13,12 @@ class CreateCardContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('card_content', function(Blueprint $table) {
+        Schema::create('card_content', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('filename');
+            $table->string('name', 255);
+            $table->string('filename', 255);
             $table->text('content');
             $table->unsignedInteger('card_id');
-            $table->unsignedInteger('language_id')
-                ->nullable();
             $table->timestamps();
         });
     }

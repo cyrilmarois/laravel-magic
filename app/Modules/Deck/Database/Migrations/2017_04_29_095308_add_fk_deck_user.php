@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDeckFormatForeignKey extends Migration
+class AddFkDeckUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class AddDeckFormatForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('deck_format', function(Blueprint $table) {
-            $table->foreign('deck_id', 'deck_format_deck_id_foreign')
+        Schema::table('deck_user', function(Blueprint $table) {
+            $table->foreign('deck_id', 'deck_user_deck_id_foreign')
                 ->references('id')
                 ->on('deck')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-            $table->foreign('format_id', 'deck_format_format_id_foreign')
+            $table->foreign('user_id', 'deck_user_user_id_foreign')
                 ->references('id')
-                ->on('format')
+                ->on('user')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });
@@ -34,9 +34,9 @@ class AddDeckFormatForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('deck_format', function(Blueprint $table) {
-            $table->dropForeign('deck_format_deck_id_foreign');
-            $table->dropForeign('deck_format_format_id_foreign');
+        Schema::table('deck_user', function(Blueprint $table) {
+            $table->dropForeign('deck_user_deck_id_foreign');
+            $table->dropForeign('deck_user_user_id_foreign');
         });
     }
 }

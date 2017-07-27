@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCardDeckForeignKey extends Migration
+class AddFkSetRarity extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class AddCardDeckForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('card_deck', function(Blueprint $table) {
-            $table->foreign('card_id', 'card_deck_card_id_foreign')
+        Schema::table('set_rarity', function(Blueprint $table) {
+            $table->foreign('set_id', 'set_rarity_set_id_foreign')
                 ->references('id')
-                ->on('card')
+                ->on('set')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-            $table->foreign('deck_id', 'card_deck_deck_id_foreign')
+            $table->foreign('rarity_id', 'set_rarity_rarity_id_foreign')
                 ->references('id')
-                ->on('deck')
+                ->on('set')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });
@@ -34,9 +34,9 @@ class AddCardDeckForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('card_deck', function(Blueprint $table) {
-            $table->dropForeign('card_deck_card_id_foreign');
-            $table->dropForeign('card_deck_deck_id_foreign');
+        Schema::table('set_rarity', function(Blueprint $table) {
+            $table->dropForeign('set_rarity_set_id_foreign');
+            $table->dropForeign('set_rarity_rarity_id_foreign');
         });
     }
 }
