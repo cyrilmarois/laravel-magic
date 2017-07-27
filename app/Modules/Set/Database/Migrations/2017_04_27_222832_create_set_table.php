@@ -15,14 +15,12 @@ class CreateSetTable extends Migration
     {
         Schema::create('set', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
-            $table->string('slug', 10);
-            $table->string('logo_filename');
-            $table->string('icon_filename');
+            $table->string('slug', 45);
+            $table->string('icon_filename', 100);
             $table->integer('quantity')
                 ->unsigned()
                 ->default(0);
-            $table->datetime('published_at');
+            $table->date('published_at');
             $table->unsignedInteger('collection_id')
                 ->index()
                 ->nullable();

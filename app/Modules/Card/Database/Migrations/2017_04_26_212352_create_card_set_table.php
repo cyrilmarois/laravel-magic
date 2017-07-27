@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeTable extends Migration
+class CreateCardSetTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('type', function(Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 255);
-            $table->string('slug', 30);
-            $table->integer('parent_id')
-                ->unsigned();
+        Schema::create('card_set', function (Blueprint $table) {
+            $table->unsignedInteger('card_id')
+                ->index();;
+            $table->unsignedInteger('set_id')
+                ->index();
+            $table->primary(['card_id', 'set_id']);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type');
+        Schema::dropIfExists('card_set');
     }
 }

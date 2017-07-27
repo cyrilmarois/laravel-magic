@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCardContentForeignKey extends Migration
+class AddFkCardDeck extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class AddCardContentForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('card_content', function(Blueprint $table) {
-            $table->foreign('card_id', 'card_content_card_id_foreign')
+        Schema::table('card_deck', function(Blueprint $table) {
+            $table->foreign('card_id', 'card_deck_card_id_foreign')
                 ->references('id')
                 ->on('card')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-            $table->foreign('language_id', 'card_content_language_id_foreign')
+            $table->foreign('deck_id', 'card_deck_deck_id_foreign')
                 ->references('id')
-                ->on('language')
-                ->onDelete('SET NULL')
+                ->on('deck')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });
     }
@@ -34,9 +34,9 @@ class AddCardContentForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('card_content', function(Blueprint $table) {
-            $table->dropForeign('card_content_card_id_foreign');
-            $table->dropForeign('card_content_language_id_foreign');
+        Schema::table('card_deck', function(Blueprint $table) {
+            $table->dropForeign('card_deck_card_id_foreign');
+            $table->dropForeign('card_deck_deck_id_foreign');
         });
     }
 }

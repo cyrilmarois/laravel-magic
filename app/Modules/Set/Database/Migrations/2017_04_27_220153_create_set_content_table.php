@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeTable extends Migration
+class CreateSetContentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('type', function(Blueprint $table) {
+        Schema::create('set_content', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
-            $table->string('slug', 30);
-            $table->integer('parent_id')
-                ->unsigned();
+            $table->string('name', 100);
+            $table->string('logo_filename');
+            $table->text('content');
+            $table->unsignedInteger('set_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type');
+        Schema::dropIfExists('set_content');
     }
 }
