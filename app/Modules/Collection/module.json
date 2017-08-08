@@ -1,0 +1,7 @@
+{
+    "name": "Collection",
+    "slug": "collection",
+    "version": "1.0",
+    "description": "This is the description for the Collection module.",
+    "order": 6
+}
