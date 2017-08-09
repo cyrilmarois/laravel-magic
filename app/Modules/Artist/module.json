@@ -1,0 +1,7 @@
+{
+    "name": "Artist",
+    "slug": "artist",
+    "version": "1.0",
+    "description": "This is the description for the Artist module.",
+    "order": 9
+}
