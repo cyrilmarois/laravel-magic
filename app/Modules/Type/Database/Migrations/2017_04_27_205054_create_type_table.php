@@ -17,8 +17,9 @@ class CreateTypeTable extends Migration
             $table->increments('id');
             $table->string('name', 255);
             $table->string('slug', 30);
-            $table->integer('parent_id')
-                ->unsigned();
+            $table->unsignedInteger('parent_id')
+                ->nullable()
+                ->default('null');
             $table->timestamps();
         });
     }
