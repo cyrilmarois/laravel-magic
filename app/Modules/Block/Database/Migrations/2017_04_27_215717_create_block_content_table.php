@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollectionTable extends Migration
+class CreateBlockContentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateCollectionTable extends Migration
      */
     public function up()
     {
-        Schema::create('collection', function(Blueprint $table) {
+        Schema::create('block_content', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name', 255);
+            $table->text('content')
+                ->nullable();
+            $table->unsignedInteger('block_id');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateCollectionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collection');
+        Schema::dropIfExists('block_content');
     }
 }

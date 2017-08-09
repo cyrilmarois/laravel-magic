@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/collection', function (Request $request) {
-    // return $request->collection();
+Route::get('/block', function (Request $request) {
+    // return $request->block();
 })->middleware('auth:api');

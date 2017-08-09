@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFkCollectionContent extends Migration
+class AddFkBlockContent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddFkCollectionContent extends Migration
      */
     public function up()
     {
-        Schema::table('collection_content', function(Blueprint $table) {
-            $table->foreign('collection_id', 'collection_content_collection_id_foreign')
+        Schema::table('block_content', function(Blueprint $table) {
+            $table->foreign('block_id', 'block_content_block_id_foreign')
                 ->references('id')
-                ->on('collection')
+                ->on('block')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });
@@ -29,8 +29,8 @@ class AddFkCollectionContent extends Migration
      */
     public function down()
     {
-        Schema::table('collection_content', function(Blueprint $table) {
-            $table->dropForeign('collection_content_collection_id_foreign');
+        Schema::table('block_content', function(Blueprint $table) {
+            $table->dropForeign('block_content_block_id_foreign');
         });
     }
 }

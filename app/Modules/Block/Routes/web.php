@@ -11,8 +11,8 @@
 |
 */
 
-Route::group(['prefix' => 'collection'], function () {
+Route::group(['prefix' => 'block'], function () {
     Route::get('/', function () {
-        dd('This is the Collection module index page. Build something great!');
+        dd('This is the Block module index page. Build something great!');
     });
 });

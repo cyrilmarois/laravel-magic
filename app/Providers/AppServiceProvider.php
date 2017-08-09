@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'set' => 'App\Modules\Set\Models\Set',
             'card' => 'App\Modules\Card\Models\Card',
-            'collection' => 'App\Modules\Collection\Models\Collection',
+            'block' => 'App\Modules\Block\Models\Block',
         ]);
     }
 

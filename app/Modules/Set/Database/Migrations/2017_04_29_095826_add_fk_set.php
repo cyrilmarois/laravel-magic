@@ -14,9 +14,9 @@ class AddFkSet extends Migration
     public function up()
     {
         Schema::table('set', function(Blueprint $table) {
-            $table->foreign('collection_id', 'set_collection_id_foreign')
+            $table->foreign('block_id', 'set_block_id_foreign')
                 ->references('id')
-                ->on('collection')
+                ->on('block')
                 ->onDelete('SET NULL')
                 ->onUpdate('CASCADE');
         });
@@ -30,7 +30,7 @@ class AddFkSet extends Migration
     public function down()
     {
         Schema::table('set', function(Blueprint $table) {
-            $table->dropForeign('set_collection_id_foreign');
+            $table->dropForeign('set_block_id_foreign');
         });
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Collection\Providers;
+namespace App\Modules\Block\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Modules\Collection\Http\Controllers';
+    protected $namespace = 'App\Modules\Block\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace'  => $this->namespace,
         ], function ($router) {
-            require module_path('collection', 'Routes/web.php');
+            require module_path('block', 'Routes/web.php');
         });
     }
 
@@ -71,9 +71,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::group([
             'middleware' => 'api',
             'namespace'  => $this->namespace,
-            'prefix'     => 'api',
+            'prefix'     => 'api/v'.env('APP_API_VERSION'),
         ], function ($router) {
-            require module_path('collection', 'Routes/api.php');
+            require module_path('block', 'Routes/api.php');
         });
     }
 }

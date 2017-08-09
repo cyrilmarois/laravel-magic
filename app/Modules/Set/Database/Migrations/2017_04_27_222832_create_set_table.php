@@ -17,11 +17,10 @@ class CreateSetTable extends Migration
             $table->increments('id');
             $table->string('slug', 45);
             $table->string('icon_filename', 100);
-            $table->integer('quantity')
-                ->unsigned()
+            $table->unsignedInteger('count')
                 ->default(0);
             $table->date('published_at');
-            $table->unsignedInteger('collection_id')
+            $table->unsignedInteger('block_id')
                 ->index()
                 ->nullable();
             $table->timestamps();
