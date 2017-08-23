@@ -2,7 +2,7 @@
 
 namespace App\Components;
 
-use App\Modules\User\Models\User;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 
 class XRepository 
@@ -31,9 +31,9 @@ class XRepository
 			$model->save();
 
 			return $model;
-		} catch (Exception $e) {
+		} catch (HttpResponseException $e) {
 			Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
-			throw $e;
+			return $e->getResponse();
 		}
 	}
 
@@ -48,9 +48,9 @@ class XRepository
 			$model->save();
 
 			return $model;
-		} catch (Exception $e) {
+		} catch (HttpResponseException $e) {
 			Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
-			throw $e;
+			return $e->getResponse();
 		}
 	}
 
@@ -60,9 +60,9 @@ class XRepository
 			Log::info('Trace in '.__METHOD__);
 
 			return ['data' => $this->_model::all()];
-		} catch (Exception $e) {
+		} catch (HttpResponseException $e) {
 			Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
-			throw $e;
+			return $e->getResponse();
 		}
 	}
 
@@ -72,9 +72,9 @@ class XRepository
 			Log::info('Trace in '.__METHOD__);
 
 			return $this->_model::find($id);
-		} catch (Exception $e) {
+		} catch (HttpResponseException $e) {
 			Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
-			throw $e;
+			return $e->getResponse();
 		}
 	}
 }
