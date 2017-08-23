@@ -33,7 +33,21 @@ class XModel extends Model
             }
         } catch(HttpResponseException $e) {
             Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
-            throw $e;
+            return $e->getResponse();
+        }
+    }
+
+    public static function findBySlug($slug)
+    {
+        try {
+            Log::info('Trace in '.__METHOD__);
+    
+            $model = static::class;
+
+            return $model::whereSlug($slug)->first();
+        } catch(HttpResponseException $e) {
+            Log::error('Error in '.__METHOD__, ['message' => $e->getMessage()]);
+            return $e->getResponse();
         }
     }
 }
