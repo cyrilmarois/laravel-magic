@@ -18,5 +18,5 @@ Route::group(['prefix' => '/user', 'middleware' => 'api'], function() {
 	Route::get('/', 'UserController@index');
 	Route::get('/{id}', 'UserController@show');
 	Route::patch('/{id}', 'UserController@update');
-	Route::delete('/{id}', 'UserController@index');
+	Route::delete('/{id}', 'UserController@delete');
 });
